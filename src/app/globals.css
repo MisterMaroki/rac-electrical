@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #273878;
+  --color-primary-dark: #131c3c;
+  --color-primary-light: #e8ecf5;
+  --color-accent: #cfa13c;
+  --color-accent-dark: #b8912f;
+  --color-accent-light: #ffeed6;
+  --color-dark: #131c3c;
+  --color-dark-mid: #1f1e1d;
+  --color-cream: #faf9f5;
+  --color-cream-alt: #f5f3ee;
+  --color-text: #1f1e1d;
+  --color-text-light: #64748b;
+  --color-border: #e2e8f0;
+}
+
+/* Short-name aliases for inline var() references */
+:root {
+  --primary: #273878;
+  --primary-dark: #131c3c;
+  --primary-light: #e8ecf5;
+  --accent: #cfa13c;
+  --accent-dark: #b8912f;
+  --accent-light: #ffeed6;
+  --dark: #131c3c;
+  --dark-mid: #1f1e1d;
+  --cream: #faf9f5;
+  --cream-alt: #f5f3ee;
+  --text: #1f1e1d;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --navy: #273878;
+  --gold: #cfa13c;
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+  color: var(--color-text);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading), serif;
+}
+
+/* ── Premium Animations ── */
+
+/* 1. Gold shimmer for text */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-shimmer {
+  background: linear-gradient(90deg, #cfa13c 0%, #e8c96a 25%, #cfa13c 50%, #e8c96a 75%, #cfa13c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* 2. Fade-in-up for scroll reveals */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* 3. Subtle pulse for trust badges */
+@keyframes gentle-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* 4. Gold line expand animation */
+@keyframes expandLine {
+  from { width: 0; }
+  to { width: 48px; }
+}
+.animate-expand-line {
+  animation: expandLine 1s ease-out forwards;
+}
