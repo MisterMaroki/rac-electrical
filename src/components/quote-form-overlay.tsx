@@ -97,8 +97,8 @@ export function QuoteFormOverlay() {
         <Image
           src="/images/logo.png"
           alt="RAC Maintenance & Electrical"
-          width={160}
-          height={40}
+          width={800}
+          height={370}
           className="h-8 sm:h-10 w-auto brightness-0"
         />
         <button
