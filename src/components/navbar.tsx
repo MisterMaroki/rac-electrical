@@ -78,8 +78,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        style={{ top: "var(--banner-height, 0px)" }}
-        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           solid
             ? "bg-white/85 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_8px_24px_rgba(0,0,0,0.04)] border-b border-gray-200/40"
             : "bg-transparent"
@@ -288,7 +287,7 @@ export function Navbar() {
 
       {/* Mobile Slide-out Menu */}
       <div
-        className={`fixed inset-0 top-[calc(var(--banner-height,0px)+4rem)] md:top-[calc(var(--banner-height,0px)+5rem)] z-50 lg:hidden transition-all duration-300 ${
+        className={`fixed inset-0 top-16 md:top-20 z-50 lg:hidden transition-all duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
