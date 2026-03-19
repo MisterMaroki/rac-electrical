@@ -8,12 +8,22 @@ export function EmergencyBanner() {
 
   useEffect(() => {
     const update = () => {
-      const h = dismissed ? 0 : (bannerRef.current?.offsetHeight ?? 0);
-      document.documentElement.style.setProperty("--banner-height", `${h}px`);
+      if (dismissed || !bannerRef.current) {
+        document.documentElement.style.setProperty("--banner-height", "0px");
+        return;
+      }
+      const bannerH = bannerRef.current.offsetHeight;
+      const scrollY = window.scrollY;
+      const visible = Math.max(0, bannerH - scrollY);
+      document.documentElement.style.setProperty("--banner-height", `${visible}px`);
     };
     update();
     window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    window.addEventListener("scroll", update, { passive: true });
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("scroll", update);
+    };
   }, [dismissed]);
 
   if (dismissed) return null;
