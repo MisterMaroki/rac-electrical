@@ -1,14 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function EmergencyBanner() {
   const [dismissed, setDismissed] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const update = () => {
+      const h = dismissed ? 0 : (bannerRef.current?.offsetHeight ?? 0);
+      document.documentElement.style.setProperty("--banner-height", `${h}px`);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [dismissed]);
 
   if (dismissed) return null;
 
   return (
-    <div className="bg-red-600 text-white text-center text-sm font-semibold relative z-[60]">
+    <div ref={bannerRef} className="bg-red-600 text-white text-center text-sm font-semibold relative z-[60]">
       <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-3 flex-wrap">
         <span className="flex items-center gap-2">
           <svg className="w-4 h-4 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
